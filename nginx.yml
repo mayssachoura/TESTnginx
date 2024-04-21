@@ -1,6 +1,6 @@
 ---
 - name: Configuration avancée du serveur web Nginx sur Ubuntu
-  hosts: ubuntu_servers
+  hosts: all
   become: yes
   tasks:
     - name: Mise à jour du cache des paquets
