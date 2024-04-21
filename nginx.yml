@@ -1,20 +1,24 @@
 ---
-- name: Configuration avancée du serveur web
-  hosts: all
+- name: Configuration avancée du serveur web Nginx sur Ubuntu
+  hosts: ubuntu_servers
   become: yes
   tasks:
-    - name: Installer Nginx
-      yum:
+    - name: Mise à jour du cache des paquets
+      apt:
+        update_cache: yes
+
+    - name: Installation de Nginx
+      apt:
         name: nginx
         state: present
 
-    - name: Copier le fichier de configuration du site
+    - name: Copie du fichier de configuration du site
       template:
         src: /chemin/vers/votre/template/nginx.conf.j2
         dest: /etc/nginx/nginx.conf
       notify: Reload Nginx
 
-    - name: Démarrer Nginx et le configurer pour le démarrage automatique
+    - name: Démarrage de Nginx et configuration pour le démarrage automatique
       service:
         name: nginx
         state: started
@@ -25,3 +29,4 @@
       service:
         name: nginx
         state: reloaded
+
