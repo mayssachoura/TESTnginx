@@ -16,7 +16,7 @@
       template:
         src: /chemin/vers/votre/template/nginx.conf.j2
         dest: /etc/nginx/nginx.conf
-        remote_src: true  # Spécifie que le fichier existe sur l'hôte distant
+        remote_src: false  # Spécifie que le fichier existe sur l'hôte distant
       notify: Reload Nginx
 
     - name: Démarrage de Nginx et configuration pour le démarrage automatique
